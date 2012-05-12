@@ -1,0 +1,23 @@
+﻿<Window x:Class="TwitShot.Presentation.ShellView"
+        xmlns:cal="http://www.caliburnproject.org"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Control="clr-namespace:TaskBarNotification.Control;assembly=TaskBarNotification.Control">
+	<Grid>
+        <Control:TaskbarIcon Visibility="Visible"
+            x:Name="TwitShotNotifyIcon"
+            IconSource="/Resources/TwitShot.ico"
+            ToolTipText="TwitShot"
+            MenuActivation="LeftOrRightClick" PopupActivation="DoubleClick">
+            
+            <Control:TaskbarIcon.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Capture" Command="{Binding AreaCaptureCommand}" CommandParameter="{Binding}" />
+                    <Separator />
+                    <MenuItem Header="Exit" Command="{Binding ExitCommand}" CommandParameter="{Binding}" />
+                </ContextMenu>
+            </Control:TaskbarIcon.ContextMenu>
+        </Control:TaskbarIcon>
+    </Grid>
+
+</Window>

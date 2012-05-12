@@ -1,0 +1,39 @@
+﻿<Window
+    x:Class="TwitShot.Presentation.ClipperView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    Background="Transparent"
+    WindowStyle="None" 
+    MinHeight="100" MinWidth="100"
+    Height="282" Width="439"
+    MouseMove="OnMouseMove" MouseDown="OnMouseDown"
+    MouseDoubleClick="OnMouseDoubleClick"
+    KeyUp="OnKeyup" WindowStartupLocation="CenterScreen">
+
+    <Border  x:Name="imageBackground" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#0E9DEBF5" Margin="5,0,5,5">
+        <Border.Effect>
+            <DropShadowEffect Color="Black" />
+        </Border.Effect>
+        <Grid >
+
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Grid.Row="1">+</TextBlock>
+
+            <TextBlock x:Name="Dimentions" FontStyle="Normal" FontFamily="Consolas" FontSize="8" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="-5,25,0,0">
+                <TextBlock.LayoutTransform>
+                    <RotateTransform Angle="270"/>
+                </TextBlock.LayoutTransform>
+            </TextBlock>
+
+            <Thumb x:Name="CornerTlThumb" Height="6" Margin="0,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Cursor="SizeNWSE"  DragDelta="TlDragDelta" Opacity="0"/>
+            <Thumb x:Name="CornerTrThumb" Height="6" Margin="0,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Right" Cursor="SizeNESW"  DragDelta="TrDragDelta" Opacity="0"/>
+            <Thumb x:Name="CornerBlThumb" Height="6" Margin="0,0,0,0" VerticalAlignment="Bottom" HorizontalAlignment="Left" Cursor="SizeNESW"  DragDelta="BlDragDelta" Opacity="0"/>
+            <Thumb x:Name="CornerBrThumb" Height="6" Margin="0,0,0,0" VerticalAlignment="Bottom" HorizontalAlignment="Right" Cursor="SizeNWSE"  DragDelta="BrDragDelta" Opacity="0"/>
+
+            <Thumb x:Name="TopThumb" Height="6" Margin="14,0" VerticalAlignment="Top" Cursor="SizeNS" DragDelta="TopDragDelta" Opacity="0"/>
+            <Thumb x:Name="BottomThumb" Height="6" Margin="14,0" VerticalAlignment="Bottom" Cursor="SizeNS" DragDelta="BottomDragDelta" Opacity="0"/>
+            <Thumb x:Name="RigthThumb" HorizontalAlignment="Right" Margin="0,14" Width="6" Cursor="SizeWE" DragDelta="RigthDragDelta" Opacity="0"/>
+            <Thumb x:Name="LeftThumb" HorizontalAlignment="Left" Margin="0,14" Width="6" Cursor="SizeWE" DragDelta="LeftDragDelta" Opacity="0"/>
+            
+        </Grid>
+    </Border>
+</Window>
