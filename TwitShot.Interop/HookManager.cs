@@ -5,9 +5,13 @@ using System.Windows.Forms;
 
 namespace TwitShot.Interop
 {
-    public class HookManager
+    public delegate void KeyUpEventhandler(object sender, KeyEventArgs e); 
+
+    public sealed class HookManager
     {
         private static IntPtr _hookID = IntPtr.Zero;
+
+        public event KeyUpEventhandler Onkeyup;
 
         public static bool IsPressed(Keys check)
         {
@@ -18,13 +22,11 @@ namespace TwitShot.Interop
         {
             if (nCode >= 0 && wParam == (IntPtr)WindowsNative.WM_KEYUP)
             {
-                OnKeyup((Keys)Marshal.ReadInt32(lParam));
+                var keyData = (Keys)Marshal.ReadInt32(lParam);
+                var args = new KeyEventArgs(keyData);
+                Onkeyup(this, args);
             }
             return WindowsNative.CallNextHookEx(_hookID, nCode, wParam, lParam);
-        }
-
-        public virtual void OnKeyup(Keys keys)
-        {
         }
 
         public IntPtr SetHook(Func<int, IntPtr, IntPtr, IntPtr> proc)
