@@ -1,6 +1,4 @@
 namespace TwitShot.Contracts
 {
-    public interface IResource
-    {
-    }
+    public interface IResource { }
 }

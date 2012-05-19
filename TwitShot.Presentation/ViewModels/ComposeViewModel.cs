@@ -11,17 +11,7 @@ namespace TwitShot.Presentation
         private string _message;
 
         public string Message { get { return _message; } set { _message = value; NotifyOfPropertyChange(() => Message); } }
-
-        public ImageSource Image { 
-            get
-            {
-                return _image;
-            } 
-            set { 
-                _image = value;
-                NotifyOfPropertyChange(() => Image);
-            } 
-        }
+        public ImageSource Image { get { return _image; } set { _image = value; NotifyOfPropertyChange(() => Image); } }
         
         public ComposeViewModel()
         {

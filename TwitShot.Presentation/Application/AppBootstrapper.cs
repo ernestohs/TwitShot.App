@@ -5,15 +5,19 @@ using System.ComponentModel.Composition.Hosting;
 using System.ComponentModel.Composition.Primitives;
 using System.Linq;
 using System.Windows;
+using System.Windows.Input;
 using Caliburn.Micro;
+using TwitShot.Interop;
 
 namespace TwitShot.Presentation
 {
 	public class AppBootstrapper : Bootstrapper<IShell>
 	{
 		CompositionContainer container;
-
+	    
 	    protected Window _mainWindow { get; set; }
+
+        protected KeyboardHook Keyboard =  new KeyboardHook{ SelectedKey = Key.PrintScreen };
 
 		/// <summary>
 		/// By default, we are configured to use MEF
@@ -56,8 +60,10 @@ namespace TwitShot.Presentation
 			container.SatisfyImportsOnce(instance);
 		}
 
-        protected override void OnStartup(object sender, System.Windows.StartupEventArgs e)
+        protected override void OnStartup(object sender, StartupEventArgs e)
         {
+            Keyboard.KeyCombinationPressed += (o, args) => new AreaCaptureCommand().Execute(null);
+
             var viewModel = IoC.Get<IShell>();
 
             var windowManager = IoC.Get<CustomWindowManager>();
@@ -66,5 +72,9 @@ namespace TwitShot.Presentation
             _mainWindow.Hide();
         }
 
+	    protected override void OnExit(object sender, EventArgs e)
+        {
+            Keyboard.Dispose();
+        }
 	}
 }

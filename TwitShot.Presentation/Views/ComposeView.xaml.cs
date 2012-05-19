@@ -7,11 +7,6 @@ namespace TwitShot.Presentation
 {
     public partial class ComposeView : Window
     {
-
-        private void OnLostFocus(object sender, RoutedEventArgs e)
-        {
-            
-        }
         
         private void OnKeyup(object sender, KeyEventArgs e)
         {
