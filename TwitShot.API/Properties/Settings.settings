@@ -1,0 +1,15 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="TwitShot.API.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="APIKey" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">36a58af79ee09bd700458cde8c7b268a</Value>
+    </Setting>
+    <Setting Name="ConsumerKey" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">wFvwVRWwkmUd1YMk7BuCQ</Value>
+    </Setting>
+    <Setting Name="ConsumerSecret" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">6ylZyzdLoTaNfNPhB1t0oQpqhuvLTyu9aMXVLGkm5I</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

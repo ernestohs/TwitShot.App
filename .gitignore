@@ -1,0 +1,11 @@
+#Compiled files
+*/bin/*
+*/obj/*
+
+#Resharper stuff
+*/_ReSharper*/*
+
+# Visual Studio files
+*.suo
+*.dotCover
+*.user

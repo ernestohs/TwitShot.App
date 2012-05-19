@@ -19,6 +19,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{68B5E5C0-8
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwitShot.Contracts", "TwitShot.Contracts\TwitShot.Contracts.csproj", "{0056CB8F-89CD-4FA1-8A9E-71C6F4C9D1EE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwitShot.API", "TwitShot.API\TwitShot.API.csproj", "{5C24F841-0595-402C-BBF0-F5A8A354B17E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -79,6 +81,16 @@ Global
 		{0056CB8F-89CD-4FA1-8A9E-71C6F4C9D1EE}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{0056CB8F-89CD-4FA1-8A9E-71C6F4C9D1EE}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{0056CB8F-89CD-4FA1-8A9E-71C6F4C9D1EE}.Release|x86.ActiveCfg = Release|Any CPU
+		{5C24F841-0595-402C-BBF0-F5A8A354B17E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C24F841-0595-402C-BBF0-F5A8A354B17E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C24F841-0595-402C-BBF0-F5A8A354B17E}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{5C24F841-0595-402C-BBF0-F5A8A354B17E}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{5C24F841-0595-402C-BBF0-F5A8A354B17E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{5C24F841-0595-402C-BBF0-F5A8A354B17E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C24F841-0595-402C-BBF0-F5A8A354B17E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C24F841-0595-402C-BBF0-F5A8A354B17E}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{5C24F841-0595-402C-BBF0-F5A8A354B17E}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{5C24F841-0595-402C-BBF0-F5A8A354B17E}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -89,5 +101,6 @@ Global
 		{A8F36BD7-13B5-4BE3-843F-EA6B359E8B1D} = {6D01E24B-E8DA-479D-978A-97267C7BF8BB}
 		{5C79AB29-BAC1-4169-BE30-F21947320AFB} = {4FC08108-8AAA-4F6C-B761-6BB65EA9E84D}
 		{0056CB8F-89CD-4FA1-8A9E-71C6F4C9D1EE} = {68B5E5C0-8025-4622-9F36-8728AC13128D}
+		{5C24F841-0595-402C-BBF0-F5A8A354B17E} = {68B5E5C0-8025-4622-9F36-8728AC13128D}
 	EndGlobalSection
 EndGlobal
