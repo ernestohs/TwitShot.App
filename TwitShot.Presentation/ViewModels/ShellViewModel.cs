@@ -1,4 +1,5 @@
 ﻿using System.Windows.Input;
+using TwitShot.Presentation.Commands;
 
 namespace TwitShot.Presentation {
     using System.ComponentModel.Composition;
@@ -13,6 +14,7 @@ namespace TwitShot.Presentation {
         {
             ExitCommand = new AppExitCommand();
             AreaCaptureCommand = new AreaCaptureCommand();
+            new SignInCommand().Execute(this);
         }
     }
 }

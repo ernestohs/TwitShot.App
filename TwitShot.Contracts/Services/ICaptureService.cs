@@ -2,6 +2,6 @@ namespace TwitShot.Contracts
 {
     public interface ICaptureService
     {
-        object CopyArea(double x, double y, double width, double height);
+        object Capture(double x, double y, double width, double height);
     }
 }

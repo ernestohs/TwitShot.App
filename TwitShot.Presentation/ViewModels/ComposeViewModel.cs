@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.Composition;
 using System.Windows.Media;
 using Caliburn.Micro;
+using TwitShot.Contracts;
 
 namespace TwitShot.Presentation
 {
@@ -16,6 +17,21 @@ namespace TwitShot.Presentation
         public ComposeViewModel()
         {
             Message = "#TwitShot ";
+        }
+
+        public void RequestComplete(IStatus obj)
+        {
+            if (obj == null) return;
+
+            if (obj.Success)
+            {
+                //obj.Value // Message on success
+                // close this window
+            }
+            else
+            {
+                //obj.Message; // Error message
+            }
         }
     }
 }

@@ -22,7 +22,6 @@ namespace TwitShot.Presentation
                                      { "AllowsTransparency", true},
                                      { "Background", new SolidColorBrush(Colors.Transparent)},
                                      { "StartupLocation", WindowStartupLocation.CenterScreen},
-
                                  };
 
             windowManager.ShowWindow(IoC.Get<ClipperViewModel>(), null, settings);

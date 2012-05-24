@@ -1,4 +1,6 @@
-﻿using RestSharp;
+﻿using System;
+using RestSharp;
+using TwitShot.Contracts;
 
 namespace TwitShot.API
 {
@@ -23,15 +25,10 @@ namespace TwitShot.API
                 if (string.IsNullOrEmpty(_authString))
                 {
                     _authString = string.Format(HeaderTemplate, OAuth.ConsumerKey, OAuth.Token, OAuth.TimeStamp,
-                                                OAuth.nonce, OAuth.Signature);
+                                                OAuth.Nonce, OAuth.Signature);
                 }
                 return _authString;
             }
-        }
-
-        public TwitPicAPI()
-        {
-            
         }
 
         private T Execute<T>(IRestRequest request) where T : new()
@@ -43,17 +40,23 @@ namespace TwitShot.API
             return response.Data;
         }
 
+        public void Login(string userName, string password, Action<IStatus> action)
+        {
+            throw new NotImplementedException();
+        }
+
         public TwitPicResponse Upload(string path, string message)
         {
             Request = new RestRequest();
-            Request.AddFile("key", Properties.Settings.Default.APIKey);
+            Request.AddParameter("key", Properties.Settings.Default.APIKey);
             Request.AddFile("media", path);
             return Execute<TwitPicResponse>(Request);
         }
 
         public object GetTumbnail(int imageId, ThumbSize size)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
+
     }
 }

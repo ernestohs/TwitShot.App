@@ -9,6 +9,11 @@
                     <Presentation:AppBootstrapper x:Key="bootstrapper" />
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
+            <LinearGradientBrush x:Key="glassBrush" EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF3C6AA3" Offset="0.828"/>
+                <GradientStop Color="#FF99CAA8" Offset="0.332"/>
+                <GradientStop Color="#FFCACACA" Offset="0"/>
+            </LinearGradientBrush>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

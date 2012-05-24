@@ -74,6 +74,12 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TwitShot.Contracts\TwitShot.Contracts.csproj">
+      <Project>{0056CB8F-89CD-4FA1-8A9E-71C6F4C9D1EE}</Project>
+      <Name>TwitShot.Contracts</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

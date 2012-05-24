@@ -2,7 +2,6 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:wpfspark="clr-namespace:WPFSpark;assembly=WPFSpark"
-        xmlns:Presentation="clr-namespace:TwitShot.Presentation" 
         Title="ComposeView" 
         Height="494" 
         Width="424" 
@@ -26,14 +25,17 @@
             </TextBox>
             <Button Content="Send" Grid.Column="1" Margin="0,6,4,6" Name="Send" Command="{Binding SendToCommand}" CommandParameter="{Binding}" />
         </Grid>
-        <Image Name="Capture" Stretch="Fill" Source="{Binding Image}" UseLayoutRounding="False" Margin="6,4.75,4,6" Drop="DropContent" AllowDrop="True" />
-
+        <InkCanvas Name="Capture"  Margin="6,4.75,4,6" UseLayoutRounding="False" Drop="DropContent" AllowDrop="True">
+            <InkCanvas.Background>
+                <ImageBrush ImageSource="{Binding Image}" Stretch="Fill"/>
+            </InkCanvas.Background>
+        </InkCanvas>
         <wpfspark:SprocketControl 
                                   HorizontalAlignment="Center"
                                   Name="loadingIndicator"
                                   Margin="0,100,0,0"
                                   VerticalAlignment="Top"
-                                  TickColor="DarkSalmon"
+                                  TickColor="Blue"
                                   Width="50"
                                   Height="50"
                                   TickWidth="3"

@@ -1,7 +1,12 @@
-﻿namespace TwitShot.Contracts
+﻿using System;
+using System.Collections.Generic;
+
+namespace TwitShot.Contracts
 {
     public interface IAuthenticationService
     {
-        IStatus Login(ICredentials credentials);
+        ICollection<ICredentials> Accounts { get; }
+        void Login(ICredentials credentials, Action<IStatus> onCompleteCallback);
+        bool IsSignedOn { get; }
     }
 }

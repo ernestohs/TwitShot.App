@@ -5,7 +5,7 @@ namespace TwitShot.API
         string ConsummerKey { get; set; }
         string Token { get; set; }
         string TimeStamp { get; set; }
-        string nonce { get; set; }
+        string Nonce { get; set; }
         string Signature { get; set; }
         string ConsumerKey { get; set; }
     }
