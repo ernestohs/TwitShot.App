@@ -10,7 +10,11 @@ namespace TwitShot.Services
         protected bool _isSignedOn;
         public bool IsSignedOn { get { return _isSignedOn; } }
 
+        public IOAuth OAuth { get; set; }
+
         private readonly ICollection<ICredentials> _accounts = new List<ICredentials>();
+        private readonly TwitterHelper _twitterHelper = new TwitterHelper();
+
         public ICollection<ICredentials> Accounts { get { return _accounts; } }
 
         public void Login(ICredentials credentials, Action<IStatus> onCompleteCallback)
@@ -35,7 +39,10 @@ namespace TwitShot.Services
 
         public Uri GetAuthenticationUri()
         {
-            return new Uri(new TwitterHelper().AuthorizationLinkGet());
+            var uri = new Uri(_twitterHelper.AuthorizationLinkGet());
+            OAuth.ConsumerKey = _twitterHelper.TokenSecret;
+            OAuth.Token = _twitterHelper.Token;
+            return uri;
         }
     }
 }

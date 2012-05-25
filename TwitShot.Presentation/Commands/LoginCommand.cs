@@ -12,19 +12,15 @@ namespace TwitShot.Presentation
 
         public void Execute(object parameter)
         {
-            //var viewModel = parameter as LoginViewModel;
             var viewModel = parameter as OAuthPinViewModel;
             if (viewModel == null) return;
+            
+            var credentials = new Credentials
+            {
+                Service = new PublishService(viewModel.OAuth)
+            };
 
-            //viewModel.PIN
-
-            //var credentials = new Credentials {
-            //                                   UserName = viewModel.UserName,
-            //                                   Password = viewModel.Password,
-            //                                   Service = new PublishService()
-            //                                };
-
-            //AuthService.Login(credentials, status => { viewModel.AuthStatus = status; });
+            AuthService.Login(credentials, status => { viewModel.AuthStatus = status; });
         }
 
         public bool CanExecute(object parameter)

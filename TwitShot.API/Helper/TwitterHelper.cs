@@ -68,6 +68,7 @@ namespace TwitShot.API
                 NameValueCollection qs = HttpUtility.ParseQueryString(response);
                 if (qs["oauth_token"] != null)
                 {
+                    this.Token = qs["oauth_token"];
                     ret = AUTHORIZE + "?oauth_token=" + qs["oauth_token"];
                 }
             }

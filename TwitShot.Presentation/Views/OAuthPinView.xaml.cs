@@ -12,6 +12,10 @@ namespace TwitShot.Presentation
         {
             InitializeComponent();
             browser.Source = Auth.GetAuthenticationUri();
+
+            var viewModel = DataContext as OAuthPinViewModel;
+            if (viewModel == null) return;
+            viewModel.OAuth = Auth.OAuth;
         }
     }
 }
