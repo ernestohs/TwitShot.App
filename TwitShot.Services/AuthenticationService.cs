@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using TwitShot.API;
 using TwitShot.Contracts;
 
 namespace TwitShot.Services
@@ -30,6 +31,11 @@ namespace TwitShot.Services
 
                                 onCompleteCallback(status);
                             });
+        }
+
+        public Uri GetAuthenticationUri()
+        {
+            return new Uri(new TwitterHelper().AuthorizationLinkGet());
         }
     }
 }

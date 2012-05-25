@@ -11,9 +11,7 @@ namespace TwitShot.Services
 
         public void Login(string userName, string password, Action<IStatus> action)
         {
-            if (action == null) throw new ArgumentNullException();
-
-            TwitPic.Login(userName, password, action);
+            throw new NotImplementedException();
         }
 
         public void Send(object image, string message, Action<IStatus> callback)

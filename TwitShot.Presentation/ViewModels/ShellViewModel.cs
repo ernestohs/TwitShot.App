@@ -1,8 +1,8 @@
 ﻿using System.Windows.Input;
 using TwitShot.Presentation.Commands;
+using System.ComponentModel.Composition;
 
 namespace TwitShot.Presentation {
-    using System.ComponentModel.Composition;
 
     [Export(typeof(IShell))]
     public class ShellViewModel : IShell

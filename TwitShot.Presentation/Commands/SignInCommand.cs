@@ -9,8 +9,8 @@ namespace TwitShot.Presentation.Commands
         public void Execute(object parameter)
         {
             var windowManager = new CustomWindowManager();
-            
-            windowManager.ShowWindow(IoC.Get<LoginViewModel>());
+
+            windowManager.ShowWindow(IoC.Get<OAuthPinViewModel>());
         }
 
         public bool CanExecute(object parameter)

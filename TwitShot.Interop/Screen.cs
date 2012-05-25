@@ -7,19 +7,19 @@ using PixelFormat = System.Drawing.Imaging.PixelFormat;
 
 namespace TwitShot.Interop
 {
-    public sealed class Screen : IResource
+    public class Screen : IResource
     {
-        public static object CopyArea(int x, int y, int width, int height)
+        public object Capture(int x, int y, int width, int height)
         {
-            return CopyArea(new Rectangle(x, y, width, height));
+            return Capture(new Rectangle(x, y, width, height));
         }
 
-        public static object CopyArea(Point p, Size s)
+        public object Capture(Point p, Size s)
         {
-            return CopyArea(new Rectangle(p, s));
+            return Capture(new Rectangle(p, s));
         }
 
-        public static object CopyArea(Rectangle rectangle)
+        public object Capture(Rectangle rectangle)
         {
             var bitmap = new Bitmap(rectangle.Width, rectangle.Height, PixelFormat.Format32bppArgb);
 
@@ -29,6 +29,5 @@ namespace TwitShot.Interop
             return Imaging.CreateBitmapSourceFromHBitmap(bitmap.GetHbitmap(), IntPtr.Zero, System.Windows.Int32Rect.Empty, BitmapSizeOptions.FromWidthAndHeight(rectangle.Width, rectangle.Height));
 
         }
-
     }
 }

@@ -40,11 +40,6 @@ namespace TwitShot.API
             return response.Data;
         }
 
-        public void Login(string userName, string password, Action<IStatus> action)
-        {
-            throw new NotImplementedException();
-        }
-
         public TwitPicResponse Upload(string path, string message)
         {
             Request = new RestRequest();

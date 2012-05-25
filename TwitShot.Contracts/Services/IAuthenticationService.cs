@@ -8,5 +8,6 @@ namespace TwitShot.Contracts
         ICollection<ICredentials> Accounts { get; }
         void Login(ICredentials credentials, Action<IStatus> onCompleteCallback);
         bool IsSignedOn { get; }
+        Uri GetAuthenticationUri();
     }
 }
