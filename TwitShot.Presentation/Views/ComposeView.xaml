@@ -31,20 +31,20 @@
             </InkCanvas.Background>
         </InkCanvas>
         <wpfspark:SprocketControl 
-                                  HorizontalAlignment="Center"
-                                  Name="loadingIndicator"
-                                  Margin="0,100,0,0"
-                                  VerticalAlignment="Top"
-                                  TickColor="Blue"
-                                  Width="50"
-                                  Height="50"
-                                  TickWidth="3"
-                                  TickCount="12"
-                                  StartAngle="-90"
-                                  IsIndeterminate="True"
-                                  Interval="60" 
-                                  Visibility="Hidden" 
-                                  Panel.ZIndex="100"/>
+                HorizontalAlignment="Center"
+                Name="loadingIndicator"
+                Margin="0,100,0,0"
+                VerticalAlignment="Top"
+                TickColor="Blue"
+                Width="50"
+                Height="50"
+                TickWidth="3"
+                TickCount="12"
+                StartAngle="-90"
+                IsIndeterminate="True"
+                Interval="60" 
+                Visibility="Hidden" 
+                Panel.ZIndex="100"/>
 
     </Grid>
 </Window>

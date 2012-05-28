@@ -8,9 +8,10 @@
     Height="282" Width="439"
     MouseMove="OnMouseMove" MouseDown="OnMouseDown"
     MouseDoubleClick="OnMouseDoubleClick"
+    Icon="/TwitShot.Presentation;component/Resources/TwitShot.ico"
     KeyUp="OnKeyup" WindowStartupLocation="CenterScreen">
 
-    <Border  x:Name="imageBackground" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#0E9DEBF5" Margin="5,0,5,5">
+    <Border  x:Name="imageBackground" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#0E9DEBF5" Margin="5,0,5,5"  Drop="DropContent" AllowDrop="True">
         <Border.Effect>
             <DropShadowEffect Color="Black" />
         </Border.Effect>

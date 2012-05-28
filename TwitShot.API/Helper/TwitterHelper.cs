@@ -1,4 +1,5 @@
-﻿using System;
+﻿//TODO: Refactor & Rewrite all this
+using System;
 using System.Collections.Specialized;
 using System.Configuration;
 using System.IO;
@@ -7,15 +8,20 @@ using RestSharp.Contrib;
 
 namespace TwitShot.API
 {
+    using Settings = Properties.Settings;
+
     public class TwitterHelper : OAuthBase
     {
+        //TODO: Add log4net
+        //private static readonly ILog Logger = LogManager.GetLogger(typeof(TwitterHelper));
+
         public enum Method { GET, POST };
         public const string REQUEST_TOKEN = "https://twitter.com/oauth/request_token";
         public const string AUTHORIZE = "https://twitter.com/oauth/authorize";
         public const string ACCESS_TOKEN = "https://twitter.com/oauth/access_token";
 
-        private string _consumerKey = "wFvwVRWwkmUd1YMk7BuCQ";
-        private string _consumerSecret = "6ylZyzdLoTaNfNPhB1t0oQpqhuvLTyu9aMXVLGkm5I";
+        private string _consumerKey = Settings.Default.ConsumerKey;
+        private string _consumerSecret = Settings.Default.ConsumerSecret;
         private string _token = "";
         private string _tokenSecret = "";
         private string _verifier = "";
@@ -61,15 +67,16 @@ namespace TwitShot.API
         {
             string ret = null;
 
-            string response = oAuthWebRequest(Method.GET, REQUEST_TOKEN, String.Empty);
+            var response = oAuthWebRequest(Method.GET, Settings.Default.TwitterOAuthRequestToken, String.Empty);
             if (response.Length > 0)
             {
                 //response contains token and token secret.  We only need the token.
-                NameValueCollection qs = HttpUtility.ParseQueryString(response);
+                var qs = HttpUtility.ParseQueryString(response);
                 if (qs["oauth_token"] != null)
                 {
-                    this.Token = qs["oauth_token"];
-                    ret = AUTHORIZE + "?oauth_token=" + qs["oauth_token"];
+                    Token = qs["oauth_token"];
+
+                    ret = Settings.Default.TwitterOAuthAuthorize + "?oauth_token=" + qs["oauth_token"];
                 }
             }
             return ret;
@@ -79,25 +86,25 @@ namespace TwitShot.API
         /// Exchange the request token for an access token.
         /// </summary>
         /// <param name="authToken">The oauth_token is supplied by Twitter's authorization page following the callback.</param>
+        /// <param name="verifier"> </param>
         public void AccessTokenGet(string authToken, string verifier)
         {
-            this.Token = authToken;
-            this.Verifier = verifier;
+            Token = authToken;
+            Verifier = verifier;
 
-            string response = oAuthWebRequest(Method.GET, ACCESS_TOKEN, String.Empty);
+            string response = oAuthWebRequest(Method.GET, Settings.Default.TwitterOAuthAccessToken, String.Empty);
 
-            if (response.Length > 0)
+            if (response.Length <= 0) return;
+
+            //Store the Token and Token Secret
+            var qs = HttpUtility.ParseQueryString(response);
+            if (qs["oauth_token"] != null)
             {
-                //Store the Token and Token Secret
-                NameValueCollection qs = HttpUtility.ParseQueryString(response);
-                if (qs["oauth_token"] != null)
-                {
-                    this.Token = qs["oauth_token"];
-                }
-                if (qs["oauth_token_secret"] != null)
-                {
-                    this.TokenSecret = qs["oauth_token_secret"];
-                }
+                Token = qs["oauth_token"];
+            }
+            if (qs["oauth_token_secret"] != null)
+            {
+                TokenSecret = qs["oauth_token_secret"];
             }
         }
 
@@ -131,11 +138,11 @@ namespace TwitShot.API
                             postData += "&";
                         }
                         qs[key] = HttpUtility.UrlDecode(qs[key]);
-                        qs[key] = this.UrlEncode(qs[key]);
+                        qs[key] = UrlEncode(qs[key]);
                         postData += key + "=" + qs[key];
 
                     }
-                    if (url.IndexOf("?") > 0)
+                    if (url.IndexOf("?", StringComparison.Ordinal) > 0)
                     {
                         url += "&";
                     }
@@ -147,13 +154,13 @@ namespace TwitShot.API
                 }
             }
 
-            Uri uri = new Uri(url);
+            var uri = new Uri(url);
 
             string nonce = this.GenerateNonce();
             string timeStamp = this.GenerateTimeStamp();
 
             //Generate Signature
-            string sig = this.GenerateSignature(uri,
+            string sig = GenerateSignature(uri,
                 this.ConsumerKey,
                 this.ConsumerSecret,
                 this.Token,
@@ -194,39 +201,34 @@ namespace TwitShot.API
         public string WebRequest(Method method, string url, string postData)
         {
             HttpWebRequest webRequest = null;
-            StreamWriter requestWriter = null;
             string responseData = "";
 
             webRequest = System.Net.WebRequest.Create(url) as HttpWebRequest;
             webRequest.Method = method.ToString();
             webRequest.ServicePoint.Expect100Continue = false;
-            //webRequest.UserAgent  = "Identify your application please.";
-            //webRequest.Timeout = 20000;
 
             if (method == Method.POST)
             {
                 webRequest.ContentType = "application/x-www-form-urlencoded";
 
                 //POST the data.
-                requestWriter = new StreamWriter(webRequest.GetRequestStream());
+                var requestWriter = new StreamWriter(webRequest.GetRequestStream());
                 try
                 {
                     requestWriter.Write(postData);
                 }
-                catch
+                catch // (Exception ex)
                 {
+                    //Logger.Error(ex);
                     throw;
                 }
                 finally
                 {
                     requestWriter.Close();
-                    requestWriter = null;
                 }
             }
 
             responseData = WebResponseGet(webRequest);
-
-            webRequest = null;
 
             return responseData;
 
@@ -247,15 +249,15 @@ namespace TwitShot.API
                 responseReader = new StreamReader(webRequest.GetResponse().GetResponseStream());
                 responseData = responseReader.ReadToEnd();
             }
-            catch
+            catch // (Exception ex)
             {
+                //Logger.Error(ex);
                 throw;
             }
             finally
             {
                 webRequest.GetResponse().GetResponseStream().Close();
                 responseReader.Close();
-                responseReader = null;
             }
 
             return responseData;

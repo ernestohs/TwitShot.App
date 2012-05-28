@@ -19,5 +19,10 @@ namespace TwitShot.Presentation
         {
             _composeCommand.Execute(CaptureService.Capture(x, y, width, height) as ImageSource);
         }
+
+        public void SetImage(ImageSource image)
+        {
+            _composeCommand.Execute(image);
+        }
     }
 }

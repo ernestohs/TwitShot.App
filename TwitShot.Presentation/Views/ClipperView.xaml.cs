@@ -2,6 +2,8 @@
 using System.Windows;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace TwitShot.Presentation
 {
@@ -184,5 +186,29 @@ namespace TwitShot.Presentation
             }
         }
 
+        private void DropContent(object sender, DragEventArgs e)
+        {
+            var viewModel = DataContext as ClipperViewModel;
+            if (viewModel == null) return;
+
+            Hide();
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                // Note that you can have more than one file.
+                var files = e.Data.GetData(DataFormats.FileDrop) as string[];
+                if (files != null)
+                {
+                    var image = new BitmapImage(new Uri(files[0], UriKind.RelativeOrAbsolute));
+                    viewModel.SetImage(image);
+                }
+            }
+            else if (e.Data.GetDataPresent(DataFormats.Text))
+            {
+                var url = e.Data.GetData(DataFormats.Text) as string;
+                var image = new BitmapImage(new Uri(url, UriKind.RelativeOrAbsolute));
+                image.DownloadCompleted += (a, b) => viewModel.SetImage(image);
+            }
+            Close();
+        }
     }
 }

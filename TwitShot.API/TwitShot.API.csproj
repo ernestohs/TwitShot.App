@@ -57,6 +57,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helper\OAuthBase.cs" />
+    <Compile Include="Helper\QueryParameter.cs" />
+    <Compile Include="Helper\QueryParameterComparer.cs" />
+    <Compile Include="Helper\SignatureTypes.cs" />
     <Compile Include="Helper\TwitterHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">

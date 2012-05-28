@@ -18,11 +18,12 @@ namespace TwitShot.Presentation
             get { return _status; } 
             set
             {
-                if(_status.Success)
+                _status = value;
+                if (_status != null && _status.Success)
                 {
                     CloseWindow();
-                }
-                _status = value;  NotifyOfPropertyChange(() => AuthStatus);
+                } 
+                NotifyOfPropertyChange(() => AuthStatus);
             } 
         }
 

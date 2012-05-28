@@ -8,7 +8,7 @@ namespace TwitShot.Services
     public class PublishService : IPublishService
     {
         public TwitPicAPI TwitPic = new TwitPicAPI();
-        private IOAuth OAuth;
+        public IOAuth OAuth { get; set; }
 
         public PublishService() { }
 

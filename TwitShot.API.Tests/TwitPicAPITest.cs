@@ -1,6 +1,4 @@
 ﻿using NUnit.Framework;
-using TwitShot.API;
-using RestSharp;
 using TwitShot.Contracts;
 
 namespace TwitShot.API.Tests
@@ -28,12 +26,18 @@ namespace TwitShot.API.Tests
         [Test]
         public void GetTumbnailTest()
         {
-            var target = new TwitPicAPI();
+            var target = new TwitPicAPI
+                             {
+                                 Client = null, //TODO: Add mock
+                                 OAuth = null, //TODO: Add mock
+                                 Request = null // TODO: Add mock
+                             };
 
-            object expected = null;
+            object expected = null; // TODO: Add mock image
             var actual = target.GetTumbnail(0, ThumbSize.mini);
             Assert.That(actual, Is.Not.Null);
             Assert.That(actual, Is.EqualTo(expected));
+            Assert.Inconclusive("Verify the correctness of this test method.");
         }
 
         /// <summary>
@@ -46,8 +50,7 @@ namespace TwitShot.API.Tests
             string path = string.Empty; // TODO: Initialize to an appropriate value
             string message = string.Empty; // TODO: Initialize to an appropriate value
             TwitPicResponse expected = null; // TODO: Initialize to an appropriate value
-            TwitPicResponse actual;
-            actual = target.Upload(path, message);
+            TwitPicResponse actual = target.Upload(path, message);
             Assert.AreEqual(expected, actual);
             Assert.Inconclusive("Verify the correctness of this test method.");
         }

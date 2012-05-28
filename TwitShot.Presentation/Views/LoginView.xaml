@@ -1,33 +1,35 @@
 ﻿<Window x:Class="TwitShot.Presentation.LoginView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:wpfspark="clr-namespace:WPFSpark;assembly=WPFSpark" Title="LoginView" Height="354" Width="402"
-         ResizeMode="NoResize" Background="Transparent" AllowsTransparency="True" WindowStyle="None"
-        WindowStartupLocation="CenterScreen">
+        xmlns:wpfspark="clr-namespace:WPFSpark;assembly=WPFSpark" 
+        
+        Title="LoginView" Height="354" Width="402"
+        ResizeMode="NoResize" Background="Transparent" AllowsTransparency="True" WindowStyle="None"
+        WindowStartupLocation="CenterScreen" Icon="/TwitShot.Presentation;component/Resources/TwitShot.ico">
     <Border CornerRadius="5" RenderTransformOrigin="0.5,0.5" Background="{DynamicResource glassBrush}" Name="rec1">
         <Grid >
             <Button Content="Log in" Height="23" HorizontalAlignment="Center" Margin="0,150,0,0" Name="Login" VerticalAlignment="Top" Width="75" TabIndex="3" Click="Login_Click" />
-            <PasswordBox Height="23" HorizontalAlignment="Center" Margin="0,121,0,0" Name="Password" VerticalAlignment="Top" Width="170" TabIndex="2" Password="{Binding Password}" />
+            <PasswordBox Height="23" HorizontalAlignment="Center" Margin="0,121,0,0" Name="Password" VerticalAlignment="Top" Width="170" TabIndex="2" />
             <TextBox Height="23" HorizontalAlignment="Center" Margin="0,65,0,0" Name="UserName" VerticalAlignment="Top" Width="170" TabIndex="1" Text="{Binding UserName}" />
             <Label Content="User Name" Height="28" HorizontalAlignment="Left" Margin="0,42,0,0" Name="lblUserName" VerticalAlignment="Top" Width="120" />
             <Label Content="Password" Height="28" HorizontalAlignment="Left" Margin="0,94,0,0" Name="lblPassword" VerticalAlignment="Top" Width="120" />
             <CheckBox Content="Remind me" Height="16" HorizontalAlignment="Left" Margin="105,194,0,0" Name="RemindMe" VerticalAlignment="Top" Width="170" TabIndex="4" />
             <TextBlock HorizontalAlignment="Right" Margin="0,292,6,0" Name="CopyRigth" Text="Scio Innovation Labs - Mayo 2012" Width="366" Height="14" VerticalAlignment="Top" Foreground="#70FFFFFF"></TextBlock>
             <wpfspark:SprocketControl 
-                                  HorizontalAlignment="Center"
-                                  Name="loadingIndicator"
-                                  Margin="161,6,167,0"
-                                  VerticalAlignment="Top"
-                                  TickColor="AntiqueWhite"
-                                  Width="50"
-                                  Height="50"
-                                  TickWidth="3"
-                                  Visibility="Hidden" 
-                                  TickCount="20"
-                                  StartAngle="-90"
-                                  IsIndeterminate="True"
-                                  Interval="60" 
-                                  Panel.ZIndex="100" FlowDirection="RightToLeft" Rotation="CLOCKWISE" TickStyle="Triangle" />
+                    HorizontalAlignment="Center"
+                    Name="loadingIndicator"
+                    Margin="161,6,167,0"
+                    VerticalAlignment="Top"
+                    TickColor="AntiqueWhite"
+                    Width="50"
+                    Height="50"
+                    TickWidth="3"
+                    Visibility="Hidden" 
+                    TickCount="20"
+                    StartAngle="-90"
+                    IsIndeterminate="True"
+                    Interval="60" 
+                    Panel.ZIndex="100" FlowDirection="RightToLeft" Rotation="CLOCKWISE" TickStyle="Triangle" />
         </Grid>
     </Border>
 </Window>

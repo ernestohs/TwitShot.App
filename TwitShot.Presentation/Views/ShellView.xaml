@@ -1,24 +1,22 @@
 ﻿<Window x:Class="TwitShot.Presentation.ShellView"
-        xmlns:cal="http://www.caliburnproject.org"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Control="clr-namespace:TaskBarNotification.Control;assembly=TaskBarNotification.Control">
-    
 	<Grid>
-        <Control:TaskbarIcon Visibility="Visible"
+        <Control:TaskbarIcon 
+            Visibility="{Binding SysTrayVisible}"
             x:Name="TwitShotNotifyIcon"
             IconSource="/Resources/TwitShot.ico"
-            ToolTipText="TwitShot"
-            MenuActivation="LeftOrRightClick" PopupActivation="DoubleClick">
-            
+            ToolTipText="TwitShot - Share media on twitter"
+            MenuActivation="LeftOrRightClick" 
+            PopupActivation="DoubleClick">
             <Control:TaskbarIcon.ContextMenu>
                 <ContextMenu>
-                    <MenuItem Header="Capture" Command="{Binding AreaCaptureCommand}" CommandParameter="{Binding}" />
+                    <MenuItem Header="Capture" Command="{Binding AreaCaptureCommand}" CommandParameter="{Binding}" ToolTip="Capture custom area" />
                     <Separator />
-                    <MenuItem Header="Exit" Command="{Binding ExitCommand}" CommandParameter="{Binding}" />
+                    <MenuItem Header="Exit" Command="{Binding ExitCommand}" CommandParameter="{Binding}" ToolTip="Exit" />
                 </ContextMenu>
             </Control:TaskbarIcon.ContextMenu>
         </Control:TaskbarIcon>
     </Grid>
-
 </Window>

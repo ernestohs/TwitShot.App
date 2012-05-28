@@ -37,17 +37,17 @@ namespace TaskBarNotification.Control
         /// <param name="handler">Event handler to be added</param>
         internal static void AddHandler(DependencyObject element, RoutedEvent routedEvent, Delegate handler)
         {
-            UIElement uie = element as UIElement;
-            if (uie != null)
+            var uiElement = element as UIElement;
+            if (uiElement != null)
             {
-                uie.AddHandler(routedEvent, handler);
+                uiElement.AddHandler(routedEvent, handler);
             }
             else
             {
-                ContentElement ce = element as ContentElement;
-                if (ce != null)
+                var contentElement = element as ContentElement;
+                if (contentElement != null)
                 {
-                    ce.AddHandler(routedEvent, handler);
+                    contentElement.AddHandler(routedEvent, handler);
                 }
             }
         }
@@ -61,17 +61,17 @@ namespace TaskBarNotification.Control
         /// <param name="handler">Event handler to be removed</param>
         internal static void RemoveHandler(DependencyObject element, RoutedEvent routedEvent, Delegate handler)
         {
-            UIElement uie = element as UIElement;
-            if (uie != null)
+            var uiElement = element as UIElement;
+            if (uiElement != null)
             {
-                uie.RemoveHandler(routedEvent, handler);
+                uiElement.RemoveHandler(routedEvent, handler);
             }
             else
             {
-                ContentElement ce = element as ContentElement;
-                if (ce != null)
+                var contentElement = element as ContentElement;
+                if (contentElement != null)
                 {
-                    ce.RemoveHandler(routedEvent, handler);
+                    contentElement.RemoveHandler(routedEvent, handler);
                 }
             }
         }

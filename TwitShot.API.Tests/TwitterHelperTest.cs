@@ -1,43 +1,19 @@
-﻿using TwitShot.API;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
+﻿using NUnit.Framework;
 using System.Net;
 
 namespace TwitShot.API.Tests
 {
-    
-    
     /// <summary>
     ///This is a test class for TwitterHelperTest and is intended
     ///to contain all TwitterHelperTest Unit Tests
     ///</summary>
-    [TestClass()]
+    [TestFixture]
     public class TwitterHelperTest
     {
-
-
-        private TestContext testContextInstance;
-
-        /// <summary>
-        ///Gets or sets the test context which provides
-        ///information about and functionality for the current test run.
-        ///</summary>
-        public TestContext TestContext
-        {
-            get
-            {
-                return testContextInstance;
-            }
-            set
-            {
-                testContextInstance = value;
-            }
-        }
-        
         /// <summary>
         ///A test for AccessTokenGet
         ///</summary>
-        [TestMethod()]
+        [Test]
         public void AccessTokenGetTest()
         {
             TwitterHelper target = new TwitterHelper(); // TODO: Initialize to an appropriate value
@@ -50,7 +26,7 @@ namespace TwitShot.API.Tests
         /// <summary>
         ///A test for AuthorizationLinkGet
         ///</summary>
-        [TestMethod()]
+        [Test]
         public void AuthorizationLinkGetTest()
         {
             TwitterHelper target = new TwitterHelper(); // TODO: Initialize to an appropriate value
@@ -64,7 +40,7 @@ namespace TwitShot.API.Tests
         /// <summary>
         ///A test for WebRequest
         ///</summary>
-        [TestMethod()]
+        [Test]
         public void WebRequestTest()
         {
             TwitterHelper target = new TwitterHelper(); // TODO: Initialize to an appropriate value
@@ -81,7 +57,7 @@ namespace TwitShot.API.Tests
         /// <summary>
         ///A test for WebResponseGet
         ///</summary>
-        [TestMethod()]
+        [Test]
         public void WebResponseGetTest()
         {
             TwitterHelper target = new TwitterHelper(); // TODO: Initialize to an appropriate value
@@ -96,7 +72,7 @@ namespace TwitShot.API.Tests
         /// <summary>
         ///A test for oAuthWebRequest
         ///</summary>
-        [TestMethod()]
+        [Test]
         public void oAuthWebRequestTest()
         {
             TwitterHelper target = new TwitterHelper(); // TODO: Initialize to an appropriate value
@@ -113,7 +89,7 @@ namespace TwitShot.API.Tests
         /// <summary>
         ///A test for ConsumerKey
         ///</summary>
-        [TestMethod()]
+        [Test]
         public void ConsumerKeyTest()
         {
             TwitterHelper target = new TwitterHelper(); // TODO: Initialize to an appropriate value
@@ -128,7 +104,7 @@ namespace TwitShot.API.Tests
         /// <summary>
         ///A test for ConsumerSecret
         ///</summary>
-        [TestMethod()]
+        [Test]
         public void ConsumerSecretTest()
         {
             TwitterHelper target = new TwitterHelper(); // TODO: Initialize to an appropriate value
@@ -143,7 +119,7 @@ namespace TwitShot.API.Tests
         /// <summary>
         ///A test for Token
         ///</summary>
-        [TestMethod()]
+        [Test]
         public void TokenTest()
         {
             TwitterHelper target = new TwitterHelper(); // TODO: Initialize to an appropriate value
@@ -158,7 +134,7 @@ namespace TwitShot.API.Tests
         /// <summary>
         ///A test for TokenSecret
         ///</summary>
-        [TestMethod()]
+        [Test]
         public void TokenSecretTest()
         {
             TwitterHelper target = new TwitterHelper(); // TODO: Initialize to an appropriate value
@@ -173,7 +149,7 @@ namespace TwitShot.API.Tests
         /// <summary>
         ///A test for Verifier
         ///</summary>
-        [TestMethod()]
+        [Test]
         public void VerifierTest()
         {
             TwitterHelper target = new TwitterHelper(); // TODO: Initialize to an appropriate value

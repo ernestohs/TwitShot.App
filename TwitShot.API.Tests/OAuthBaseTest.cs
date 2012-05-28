@@ -1,5 +1,4 @@
-﻿using TwitShot.API;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 using System;
 using System.Security.Cryptography;
 using System.Collections.Generic;
@@ -10,64 +9,13 @@ namespace TwitShot.API.Tests
     ///This is a test class for OAuthBaseTest and is intended
     ///to contain all OAuthBaseTest Unit Tests
     ///</summary>
-    [TestClass()]
+    [TestFixture]
     public class OAuthBaseTest
     {
-
-
-        private TestContext testContextInstance;
-
-        /// <summary>
-        ///Gets or sets the test context which provides
-        ///information about and functionality for the current test run.
-        ///</summary>
-        public TestContext TestContext
-        {
-            get
-            {
-                return testContextInstance;
-            }
-            set
-            {
-                testContextInstance = value;
-            }
-        }
-
-        #region Additional test attributes
-        // 
-        //You can use the following additional attributes as you write your tests:
-        //
-        //Use ClassInitialize to run code before running the first test in the class
-        //[ClassInitialize()]
-        //public static void MyClassInitialize(TestContext testContext)
-        //{
-        //}
-        //
-        //Use ClassCleanup to run code after all tests in a class have run
-        //[ClassCleanup()]
-        //public static void MyClassCleanup()
-        //{
-        //}
-        //
-        //Use TestInitialize to run code before running each test
-        //[TestInitialize()]
-        //public void MyTestInitialize()
-        //{
-        //}
-        //
-        //Use TestCleanup to run code after each test has run
-        //[TestCleanup()]
-        //public void MyTestCleanup()
-        //{
-        //}
-        //
-        #endregion
-
-
         /// <summary>
         ///A test for OAuthBase Constructor
         ///</summary>
-        [TestMethod()]
+        [Test]
         public void OAuthBaseConstructorTest()
         {
             OAuthBase target = new OAuthBase();
@@ -77,8 +25,7 @@ namespace TwitShot.API.Tests
         /// <summary>
         ///A test for ComputeHash
         ///</summary>
-        [TestMethod()]
-        [DeploymentItem("TwitShot.API.dll")]
+        [Test]
         public void ComputeHashTest()
         {
             OAuthBase_Accessor target = new OAuthBase_Accessor(); // TODO: Initialize to an appropriate value
@@ -94,7 +41,7 @@ namespace TwitShot.API.Tests
         /// <summary>
         ///A test for GenerateNonce
         ///</summary>
-        [TestMethod()]
+        [Test]
         public void GenerateNonceTest()
         {
             OAuthBase target = new OAuthBase(); // TODO: Initialize to an appropriate value
@@ -108,7 +55,7 @@ namespace TwitShot.API.Tests
         /// <summary>
         ///A test for GenerateSignature
         ///</summary>
-        [TestMethod()]
+        [Test]
         public void GenerateSignatureTest()
         {
             OAuthBase target = new OAuthBase(); // TODO: Initialize to an appropriate value
@@ -138,7 +85,7 @@ namespace TwitShot.API.Tests
         /// <summary>
         ///A test for GenerateSignature
         ///</summary>
-        [TestMethod()]
+        [Test]
         public void GenerateSignatureTest1()
         {
             OAuthBase target = new OAuthBase(); // TODO: Initialize to an appropriate value
@@ -167,7 +114,7 @@ namespace TwitShot.API.Tests
         /// <summary>
         ///A test for GenerateSignatureBase
         ///</summary>
-        [TestMethod()]
+        [Test]
         public void GenerateSignatureBaseTest()
         {
             OAuthBase target = new OAuthBase(); // TODO: Initialize to an appropriate value
@@ -196,7 +143,7 @@ namespace TwitShot.API.Tests
         /// <summary>
         ///A test for GenerateSignatureUsingHash
         ///</summary>
-        [TestMethod()]
+        [Test]
         public void GenerateSignatureUsingHashTest()
         {
             OAuthBase target = new OAuthBase(); // TODO: Initialize to an appropriate value
@@ -212,7 +159,7 @@ namespace TwitShot.API.Tests
         /// <summary>
         ///A test for GenerateTimeStamp
         ///</summary>
-        [TestMethod()]
+        [Test]
         public void GenerateTimeStampTest()
         {
             OAuthBase target = new OAuthBase(); // TODO: Initialize to an appropriate value
@@ -226,8 +173,7 @@ namespace TwitShot.API.Tests
         /// <summary>
         ///A test for GetQueryParameters
         ///</summary>
-        [TestMethod()]
-        [DeploymentItem("TwitShot.API.dll")]
+        [Test]
         public void GetQueryParametersTest()
         {
             OAuthBase_Accessor target = new OAuthBase_Accessor(); // TODO: Initialize to an appropriate value
@@ -242,8 +188,7 @@ namespace TwitShot.API.Tests
         /// <summary>
         ///A test for NormalizeRequestParameters
         ///</summary>
-        [TestMethod()]
-        [DeploymentItem("TwitShot.API.dll")]
+        [Test]
         public void NormalizeRequestParametersTest()
         {
             OAuthBase_Accessor target = new OAuthBase_Accessor(); // TODO: Initialize to an appropriate value
@@ -258,14 +203,13 @@ namespace TwitShot.API.Tests
         /// <summary>
         ///A test for UrlEncode
         ///</summary>
-        [TestMethod()]
+        [Test]
         public void UrlEncodeTest()
         {
-            OAuthBase target = new OAuthBase(); // TODO: Initialize to an appropriate value
+            var target = new OAuthBase(); // TODO: Initialize to an appropriate value
             string value = string.Empty; // TODO: Initialize to an appropriate value
             string expected = string.Empty; // TODO: Initialize to an appropriate value
-            string actual;
-            actual = target.UrlEncode(value);
+            string actual = target.UrlEncode(value);
             Assert.AreEqual(expected, actual);
             Assert.Inconclusive("Verify the correctness of this test method.");
         }

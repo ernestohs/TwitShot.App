@@ -1,7 +1,9 @@
 #Compiled files
 */bin/*
 */obj/*
-*/_ReSharper.*/*
+
+#Resharper Stuff
+_ReSharper.TwitShot/*
 
 # Visual Studio files
 *.suo

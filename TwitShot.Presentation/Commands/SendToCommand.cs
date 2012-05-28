@@ -8,7 +8,7 @@ namespace TwitShot.Presentation.Commands
     {
         //[Inject]
         //public IAuthenticationService AuthenticationService;
-
+        //[Inject]
         public IPublishService PublishService;
 
         public void Execute(object parameter)

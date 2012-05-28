@@ -1,10 +1,10 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Drawing;
+using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Resources;
 using System.Windows.Threading;
 using TaskBarNotification.Control.Interop;
 
@@ -144,8 +144,8 @@ namespace TaskBarNotification.Control
         {
             if (imageSource == null) return null;
 
-            Uri uri = new Uri(imageSource.ToString());
-            StreamResourceInfo streamInfo = Application.GetResourceStream(uri);
+            var uri = new Uri(imageSource.ToString());
+            var streamInfo = Application.GetResourceStream(uri);
 
             if (streamInfo == null)
             {
@@ -177,14 +177,7 @@ namespace TaskBarNotification.Control
         /// is a null reference.</exception>
         public static bool Is<T>(this T value, params T[] candidates)
         {
-            if (candidates == null) return false;
-
-            foreach (var t in candidates)
-            {
-                if (value.Equals(t)) return true;
-            }
-
-            return false;
+            return candidates != null && candidates.Contains(value);
         }
 
         #endregion
@@ -235,11 +228,14 @@ namespace TaskBarNotification.Control
         {
             if (command == null) return;
 
-            RoutedCommand rc = command as RoutedCommand;
-            if (rc != null)
+            var routedCommand = command as RoutedCommand;
+            if (routedCommand != null)
             {
                 //routed commands work on a target
-                if (rc.CanExecute(commandParameter, target)) rc.Execute(commandParameter, target);
+                if (routedCommand.CanExecute(commandParameter, target))
+                {
+                    routedCommand.Execute(commandParameter, target);
+                }
             }
             else if (command.CanExecute(commandParameter))
             {
@@ -258,11 +254,8 @@ namespace TaskBarNotification.Control
             //use the application's dispatcher by default
             if (Application.Current != null) return Application.Current.Dispatcher;
 
-            //fallback for WinForms environments
-            if (source.Dispatcher != null) return source.Dispatcher;
-
-            //ultimatively use the thread's dispatcher
-            return Dispatcher.CurrentDispatcher;
+            //fallback for WinForms environments; ultimatively use the thread's dispatcher
+            return source.Dispatcher ?? Dispatcher.CurrentDispatcher;
         }
 
 

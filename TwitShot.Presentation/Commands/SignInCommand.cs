@@ -10,7 +10,11 @@ namespace TwitShot.Presentation.Commands
         {
             var windowManager = new CustomWindowManager();
 
-            windowManager.ShowWindow(IoC.Get<OAuthPinViewModel>());
+#if OAuth
+            windowManager.ShowWindow(IoC.Get<OAuthPinViewModel>()); 
+#else
+            windowManager.ShowWindow(IoC.Get<LoginViewModel>());
+#endif
         }
 
         public bool CanExecute(object parameter)
