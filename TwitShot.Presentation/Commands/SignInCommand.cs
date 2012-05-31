@@ -1,3 +1,4 @@
+#define OAuth
 using System;
 using System.Windows.Input;
 using Caliburn.Micro;

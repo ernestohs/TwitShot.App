@@ -13,9 +13,16 @@ namespace TwitShot.Presentation
             InitializeComponent();
             browser.Source = Auth.GetAuthenticationUri();
 
+        }
+
+        private void PinUpdate_Click(object sender, RoutedEventArgs e)
+        {
             var viewModel = DataContext as OAuthPinViewModel;
+
             if (viewModel == null) return;
             viewModel.OAuth = Auth.OAuth;
+
+            new LoginCommand().Execute(viewModel);
         }
     }
 }

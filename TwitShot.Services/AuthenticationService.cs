@@ -9,7 +9,7 @@ namespace TwitShot.Services
     {
         protected bool _isSignedOn;
         public bool IsSignedOn { get { return _isSignedOn; } }
-
+        //[Inject]
         public IOAuth OAuth { get; set; }
 
         private readonly ICollection<ICredentials> _accounts = new List<ICredentials>();
@@ -19,27 +19,42 @@ namespace TwitShot.Services
 
         public void Login(ICredentials credentials, Action<IStatus> onCompleteCallback)
         {
-            credentials.Service
-                .Login(
-                    credentials.UserName, 
-                    credentials.Password, 
-                    status => {
-                                if (status.Success)
-                                {
-                                    _isSignedOn = true;
-                                    Accounts.Add(credentials);
-                                }
+            if (credentials.Service.OAuth == null)
+            {
+                credentials.Service
+                    .Login(
+                        credentials.UserName,
+                        credentials.Password,
+                        status =>
+                        {
+                            if (status.Success)
+                            {
+                                _isSignedOn = true;
+                                Accounts.Add(credentials);
+                            }
 
-                                if (onCompleteCallback == null)
-                                    return;
+                            if (onCompleteCallback == null)
+                                return;
 
-                                onCompleteCallback(status);
-                            });
+                            onCompleteCallback(status);
+                        });    
+            }
+            else
+            {
+                var status = new Status {Success = credentials.Service.OAuth.IsValid};
+                
+                onCompleteCallback(status);
+            }
         }
 
         public Uri GetAuthenticationUri()
         {
             var uri = new Uri(_twitterHelper.AuthorizationLinkGet());
+
+            if (OAuth == null) { OAuth = new OAuthObject(); }
+
+            OAuth.TimeStamp = _twitterHelper.GenerateTimeStamp();
+            OAuth.Nonce = _twitterHelper.GenerateNonce();
             OAuth.ConsumerKey = _twitterHelper.TokenSecret;
             OAuth.Token = _twitterHelper.Token;
             return uri;

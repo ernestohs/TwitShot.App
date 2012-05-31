@@ -9,8 +9,7 @@
         MinHeight="200"
         MinWidth="200"
         Topmost="True"
-        KeyUp="OnKeyup"
-        >
+        KeyUp="OnKeyup">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="365*" />

@@ -1,4 +1,5 @@
-﻿using System;
+﻿#define OAuth
+using System;
 using System.Windows.Input;
 using TwitShot.Contracts;
 using TwitShot.Services;
@@ -8,7 +9,7 @@ namespace TwitShot.Presentation
     public class LoginCommand : ICommand
     {
         //[Inject]
-        public IAuthenticationService AuthService;
+        public IAuthenticationService AuthService = new AuthenticationService();
 
         public void Execute(object parameter)
         {
@@ -23,12 +24,10 @@ namespace TwitShot.Presentation
 
             AuthService.Login(credentials, status => { viewModel.AuthStatus = status; }); 
             #else
-
             var viewModel = parameter as LoginViewModel;
             if (viewModel == null) return;
 
             viewModel.AuthStatus = new Status{Success = true};
-
             #endif
         }
 

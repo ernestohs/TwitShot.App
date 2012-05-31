@@ -17,7 +17,7 @@
                 </Grid.ColumnDefinitions>
                 <TextBox Name="CaptureMessage" Margin="6" Text="{Binding Pin}" TextAlignment="Center" FontSize="40" VerticalAlignment="center" FontStretch="Normal" FontStyle="Normal" FontWeight="Bold">
                 </TextBox>
-                <Button Content="Login" Grid.Column="1" Margin="0,6,4,6" Name="PinUpdate" VerticalAlignment="center" Width="100" Height="50" Command="{Binding LoginCommand}" CommandParameter="{Binding}" />
+                <Button Content="Login" Grid.Column="1" Margin="0,6,4,6" Name="PinUpdate" VerticalAlignment="center" Width="100" Height="50" Click="PinUpdate_Click" />
             </Grid>
             <Border BorderBrush="Silver" BorderThickness="0.25" Height="450" HorizontalAlignment="Stretch" Name="BrowserBorder" VerticalAlignment="Stretch" Width="610" Margin="-5,-5,0,0">
                 <WebBrowser Grid.Row="2" Name="browser" Height="Auto" Width="Auto" />

@@ -75,6 +75,7 @@ namespace TwitShot.API
                 if (qs["oauth_token"] != null)
                 {
                     Token = qs["oauth_token"];
+                    TokenSecret = qs["oauth_token_secret"];
 
                     ret = Settings.Default.TwitterOAuthAuthorize + "?oauth_token=" + qs["oauth_token"];
                 }

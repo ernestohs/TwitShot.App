@@ -8,5 +8,6 @@ namespace TwitShot.Contracts
         string Nonce { get; set; }
         string Signature { get; set; }
         string ConsumerKey { get; set; }
+        bool IsValid { get; }
     }
 }
