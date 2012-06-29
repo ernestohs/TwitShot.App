@@ -43,5 +43,10 @@ namespace TwitShot.Presentation
             }
         }
 
+        private void Send_Click_1(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
     }
 }

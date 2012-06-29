@@ -22,7 +22,7 @@
             </Grid.ColumnDefinitions>
             <TextBox Name="CaptureMessage" Margin="6" Text="{Binding Message}">
             </TextBox>
-            <Button Content="Send" Grid.Column="1" Margin="0,6,4,6" Name="Send" Command="{Binding SendToCommand}" CommandParameter="{Binding}" />
+            <Button Content="Send" Grid.Column="1" Margin="0,6,4,6" Name="Send" Click="Send_Click_1" />
         </Grid>
         <InkCanvas Name="Capture"  Margin="6,4.75,4,6" UseLayoutRounding="False" Drop="DropContent" AllowDrop="True">
             <InkCanvas.Background>
